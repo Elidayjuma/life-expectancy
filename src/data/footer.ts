@@ -7,15 +7,15 @@ export const footerDetails: {
     telephone: string;
     socials: ISocials;
 } = {
-    subheading: "Ace your next interview beyond imagination.",
+    subheading: "Estimate how long you will live.",
     quickLinks: [
         {
             text: "Blogs",
             url: "https://elidayjuma.com/blog"
         },
         {
-            text: "Startups",
-            url: "https://elidayjuma.com/category/startups/"
+            text: "Portfolio",
+            url: "https://portfolio.elidayjuma.com"
         },
         {
             text: "Resources",

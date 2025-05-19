@@ -4,7 +4,7 @@ import FAQ from "@/components/FAQ";
 
 import Container from "@/components/Container";
 import CTA from "@/components/CTA";
-import FeatureCards from "@/components/FeaturedCards";
+import ResourcesSection from "@/components/ResourceSection";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
     <>
       <Header />
       <Hero />
-      <FeatureCards />
+      <ResourcesSection />
       <Container>
 
         <FAQ />

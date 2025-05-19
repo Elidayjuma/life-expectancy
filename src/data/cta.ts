@@ -1,7 +1,6 @@
 export const ctaDetails = {
-    heading: 'Tweet Smarter, Grow Faster',
-    subheading: 'Generate scroll-stopping tweets in seconds. Whether you’re building a brand or just want to stay consistent, TweetGenius has you covered.',
+    heading: 'Just live well..mm?',
+    subheading: 'Discover how your lifestyle choices impact your life expectancy. Try LifeGauge now—no sign-up, no data stored, just instant insights for a healthier future.',
     appStoreUrl: '#', // Update when mobile versions are available
     googlePlayUrl: '#'
 }
-

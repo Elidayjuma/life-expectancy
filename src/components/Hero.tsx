@@ -24,9 +24,9 @@ const Hero: React.FC = () => {
                 <h1 className="text-4xl md:text-6xl md:leading-tight font-bold text-foreground">
                     <Typewriter
                         words={[heroDetails.heading]}
-                        loop={false}
+                        loop={1}
                         cursor
-                        cursorStyle="<\>"
+                        cursorStyle="❤️"
                         typeSpeed={100}
                         deleteSpeed={50}
                         delaySpeed={7000}
