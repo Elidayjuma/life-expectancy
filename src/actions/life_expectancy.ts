@@ -1,8 +1,8 @@
 type Inputs = {
-    smokingPerDay: number;
-    alcoholPerWeek: number;
-    exercisePerWeek: number;
-    sleepHoursPerDay: number;
+    smokingPerDay: number | "";
+    alcoholPerWeek: number | "";
+    exercisePerWeek: number | "";
+    sleepHoursPerDay: number | "";
     diet: boolean;
     sleep: boolean;
     stressLevel: "low" | "moderate" | "high";
@@ -19,35 +19,35 @@ export function calculateLifeExpectancy(
 ): { expectancy: number; explanation: string } {
     let expectancy = base_life_expectancy;
     const reasons: string[] = [];
-
+const num = (val: number | "") => (val === "" ? 0 : val);
     // Smoking
-    if (inputs.smokingPerDay > 0) {
-        expectancy += Math.max(-10, -1 * Math.floor(inputs.smokingPerDay / 3));
+    if (num(inputs.smokingPerDay) > 0) {
+        expectancy += Math.max(-10, -1 * Math.floor(num(inputs.smokingPerDay) / 3));
         reasons.push(`you smoke ${inputs.smokingPerDay} cigarette(s) per day`);
     } else {
         reasons.push("you do not smoke");
     }
 
     // Alcohol
-    if (inputs.alcoholPerWeek >= 14) {
+    if (num(inputs.alcoholPerWeek) >= 14) {
         expectancy -= 5;
-        reasons.push(`you drink ${inputs.alcoholPerWeek} alcoholic drinks per week (heavy use)`);
-    } else if (inputs.alcoholPerWeek >= 7) {
+        reasons.push(`you drink ${num(inputs.alcoholPerWeek)} alcoholic drinks per week (heavy use)`);
+    } else if (num(inputs.alcoholPerWeek) >= 7) {
         expectancy -= 2;
-        reasons.push(`you drink ${inputs.alcoholPerWeek} alcoholic drinks per week`);
-    } else if (inputs.alcoholPerWeek > 0) {
-        reasons.push(`you drink ${inputs.alcoholPerWeek} alcoholic drinks per week`);
+        reasons.push(`you drink ${num(inputs.alcoholPerWeek)} alcoholic drinks per week`);
+    } else if (num(inputs.alcoholPerWeek) > 0) {
+        reasons.push(`you drink ${num(inputs.alcoholPerWeek)} alcoholic drinks per week`);
     } else {
         reasons.push("you do not drink alcohol");
     }
 
     // Exercise
-    if (inputs.exercisePerWeek >= 3) {
+    if (num(inputs.exercisePerWeek) >= 3) {
         expectancy += 3;
-        reasons.push(`you exercise ${inputs.exercisePerWeek} days per week (regular exercise)`);
-    } else if (inputs.exercisePerWeek >= 1) {
+        reasons.push(`you exercise ${num(inputs.exercisePerWeek)} days per week (regular exercise)`);
+    } else if (num(inputs.exercisePerWeek) >= 1) {
         expectancy += 1;
-        reasons.push(`you exercise ${inputs.exercisePerWeek} days per week`);
+        reasons.push(`you exercise ${num(inputs.exercisePerWeek)} days per week`);
     } else {
         reasons.push("you do not exercise regularly");
     }
@@ -61,21 +61,21 @@ export function calculateLifeExpectancy(
     }
 
     // Sleep
-    if (inputs.sleepHoursPerDay >= 7 && inputs.sleepHoursPerDay <= 9) {
+    if (num(inputs.sleepHoursPerDay) >= 7 && num(inputs.sleepHoursPerDay) <= 9) {
         expectancy += 2;
-        reasons.push(`you sleep ${inputs.sleepHoursPerDay} hours per day (optimal)`);
+        reasons.push(`you sleep ${num(inputs.sleepHoursPerDay)} hours per day (optimal)`);
     } else if (
-        inputs.sleepHoursPerDay === 6 ||
-        inputs.sleepHoursPerDay === 10
+        num(inputs.sleepHoursPerDay) === 6 ||
+        num(inputs.sleepHoursPerDay) === 10
     ) {
         expectancy -= 1;
-        reasons.push(`you sleep ${inputs.sleepHoursPerDay} hours per day (slightly suboptimal)`);
+        reasons.push(`you sleep ${num(inputs.sleepHoursPerDay)} hours per day (slightly suboptimal)`);
     } else if (
-        inputs.sleepHoursPerDay < 6 ||
-        inputs.sleepHoursPerDay > 10
+        num(inputs.sleepHoursPerDay) < 6 ||
+        num(inputs.sleepHoursPerDay) > 10
     ) {
         expectancy -= 2;
-        reasons.push(`you sleep ${inputs.sleepHoursPerDay} hours per day (unhealthy)`);
+        reasons.push(`you sleep ${num(inputs.sleepHoursPerDay)} hours per day (unhealthy)`);
     }
 
     // BMI

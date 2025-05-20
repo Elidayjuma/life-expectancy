@@ -3,7 +3,8 @@
 module.exports = {
   experimental: {
     serverActions: {
-      allowedOrigins: ["tweetgenius.elidayjuma.com"],
+      allowedOrigins: ["lifeguage.elidayjuma.com"],
     },
   },
+  output: "export",
 };

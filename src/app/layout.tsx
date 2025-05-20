@@ -26,8 +26,8 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning={true}>
         <div className="dark:bg-boxdark-2 dark:text-bodydark">
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2092375407734215"
-            crossOrigin="anonymous"></script>
+          <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2092375407734215"
+            crossOrigin="anonymous" />
           {loading ? <Loader /> : children}
           <Script defer data-domain="lifeguage.elidayjuma.com" src="https://analytics.elidayjuma.com/js/script.outbound-links.js" />
         </div>

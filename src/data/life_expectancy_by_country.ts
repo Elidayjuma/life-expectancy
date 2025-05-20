@@ -6,6 +6,7 @@ export type CountryLifeExpectancy = {
 };
 
 export const LIFE_EXPECTANCY_BY_COUNTRY: CountryLifeExpectancy[] = [
+    { country: "United Kingdom", code: "GB", male: 79, female: 83 },
     { country: "Afghanistan", code: "AF", male: 61, female: 64 },
     { country: "Albania", code: "AL", male: 75, female: 79 },
     { country: "Algeria", code: "DZ", male: 74, female: 77 },
@@ -26,7 +27,6 @@ export const LIFE_EXPECTANCY_BY_COUNTRY: CountryLifeExpectancy[] = [
     { country: "Kenya", code: "KE", male: 62, female: 67 },
     { country: "Nigeria", code: "NG", male: 54, female: 56 },
     { country: "South Africa", code: "ZA", male: 62, female: 68 },
-    { country: "United Kingdom", code: "GB", male: 79, female: 83 },
     { country: "United States", code: "US", male: 76, female: 81 },
     // ...add more countries as needed
 ];

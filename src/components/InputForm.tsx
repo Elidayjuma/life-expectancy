@@ -3,10 +3,10 @@ import { calculateLifeExpectancy } from "../actions/life_expectancy";
 import { LIFE_EXPECTANCY_BY_COUNTRY } from "../data/life_expectancy_by_country"
 
 type Inputs = {
-    smokingPerDay: number; // cigarettes per day
-    alcoholPerWeek: number; // drinks per week
-    exercisePerWeek: number; // days per week
-    sleepHoursPerDay: number;
+    smokingPerDay: number | ""; // cigarettes per day
+    alcoholPerWeek: number | ""; // drinks per week
+    exercisePerWeek: number | ""; // days per week
+    sleepHoursPerDay: number | "";
     diet: boolean;
     sleep: boolean;
     stressLevel: "low" | "moderate" | "high";
@@ -19,10 +19,10 @@ type Inputs = {
 
 export default function InputForm() {
     const [inputs, setInputs] = useState<Inputs>({
-        smokingPerDay: 0,
-        alcoholPerWeek: 0,
-        exercisePerWeek: 0,
-        sleepHoursPerDay: 2,
+        smokingPerDay: "",
+        alcoholPerWeek: "",
+        exercisePerWeek: "",
+        sleepHoursPerDay: "",
         diet: false,
         sleep: false,
         stressLevel: "moderate",
@@ -30,7 +30,7 @@ export default function InputForm() {
         checkups: false,
         familyHistory: false,
         gender: "male",
-        country: LIFE_EXPECTANCY_BY_COUNTRY[0]?.code || "",
+        country: LIFE_EXPECTANCY_BY_COUNTRY[0]?.country || "",
     });
     const [result, setResult] = useState<{ expectancy: number; explanation: string } | null>(null);
     const [showForm, setShowForm] = useState(true);
@@ -42,7 +42,7 @@ export default function InputForm() {
             [name]: type === "checkbox"
                 ? (e.target as HTMLInputElement).checked
                 : type === "number"
-                    ? Number(value)
+                    ? value === "" ? "" : Number(value)
                     : value,
         }));
     };
@@ -127,6 +127,7 @@ export default function InputForm() {
                                 max={60}
                                 value={inputs.smokingPerDay}
                                 onChange={handleChange}
+                                placeholder="0"
                                 className="border rounded px-2 py-1 w-24"
                             />
                         </label>
@@ -139,6 +140,7 @@ export default function InputForm() {
                                 max={30}
                                 value={inputs.alcoholPerWeek}
                                 onChange={handleChange}
+                                placeholder="0"
                                 className="border rounded px-2 py-1 w-24"
                             />
                         </label>
@@ -151,6 +153,7 @@ export default function InputForm() {
                                 max={7}
                                 value={inputs.exercisePerWeek}
                                 onChange={handleChange}
+                                placeholder="0"
                                 className="border rounded px-2 py-1 w-24"
                             />
                         </label>
@@ -163,6 +166,7 @@ export default function InputForm() {
                                 max={18}
                                 value={inputs.sleepHoursPerDay}
                                 onChange={handleChange}
+                                placeholder="2-18"
                                 className="border rounded px-2 py-1 w-24"
                             />
                         </label>
